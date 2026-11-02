@@ -21,6 +21,14 @@ reflection, so it runs under IL2CPP on every platform), and an importable
 demo sample. Validated against the reference receiver (`ogs-ts-dotnet`:
 `dotnet run --project src/TelemetryReceive`).
 
+Every datagram stays within the standard's 1,400-byte budget
+([implementation-udp.md § Datagram budget](https://github.com/Open-Game-Standards/OGS-Telemetry-Standard/blob/main/implementation-udp.md#datagram-budget)),
+however many channels you declare: the core pages a large discovery
+(every page at start and after a change, then spread across each 2-second
+re-send) and sends a tick with many channel values as back-to-back parts,
+the pose always in the first. Changing the type label at runtime starts a
+new discovery generation.
+
 **Built with AI assistance.** Significant portions of this package
 (including the vendored core and the Unity-facing wrapper) were written
 with AI coding assistance under human direction and
