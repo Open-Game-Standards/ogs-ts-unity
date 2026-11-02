@@ -43,6 +43,9 @@ namespace Ogs.Telemetry.Unity
         [Tooltip("Object name in discovery (e.g. player_car)")]
         public string objectName = "player";
         public string typeLabel = "";
+        [Tooltip("Names this instance in receivers' session pickers when more than one " +
+                 "can run on a network (e.g. Rig 2); the host name is filled in automatically")]
+        public string instanceLabel = "";
 
         [Header("Cadence")]
         [Range(1, 240)] public double motionHz = 60.0;
@@ -118,6 +121,7 @@ namespace Ogs.Telemetry.Unity
         {
             if (!string.IsNullOrEmpty(objectName))
                 Publisher.DeclareObject(objectName, typeLabel);
+            Publisher.SetInstance(instanceLabel);
             Publisher.DeclarePause();
         }
 
