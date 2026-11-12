@@ -12,7 +12,7 @@ network, over UDP multicast. Nothing leaves the LAN.
 
 Community & support: [Discord](https://discord.gg/tseF4Q6U99) · Development is funded by [sponsorship](https://github.com/sponsors/BrianGilbert)
 
-Status: **validated, v0.4.0** — end-to-end against the reference receiver
+Status: **validated** — end-to-end against the reference receiver
 in Unity 2022.3 (discovery, motion, channels). `TelemetryPublisher`
 component, the vendored `Ogs.Telemetry` core (netstandard2.1 / C# 9, the
 same source tested in ogs-ts-dotnet and CI-checked for drift; plain C#
