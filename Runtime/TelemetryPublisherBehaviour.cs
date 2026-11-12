@@ -43,6 +43,10 @@ namespace Ogs.Telemetry.Unity
         [Tooltip("Object name in discovery (e.g. player_car)")]
         public string objectName = "player";
         public string typeLabel = "";
+        [Tooltip("What the object is. Receivers pick a cueing profile by it: a spacecraft is not a ground vehicle")]
+        public Ogs.Telemetry.Schema.ObjectType objectType = Ogs.Telemetry.Schema.ObjectType.Vehicle;
+        [Tooltip("Name of the point the pose describes (default origin)")]
+        public string referencePoint = "origin";
         [Tooltip("Names this instance in receivers' session pickers when more than one " +
                  "can run on a network (e.g. Rig 2); the host name is filled in automatically")]
         public string instanceLabel = "";
@@ -120,7 +124,7 @@ namespace Ogs.Telemetry.Unity
         void Awake()
         {
             if (!string.IsNullOrEmpty(objectName))
-                Publisher.DeclareObject(objectName, typeLabel);
+                Publisher.DeclareObject(objectName, typeLabel, objectType, "local", referencePoint);
             Publisher.SetInstance(instanceLabel);
             Publisher.DeclarePause();
         }
